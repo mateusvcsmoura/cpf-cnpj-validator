@@ -23,6 +23,20 @@ app.post('/validateCnpj', (req, res) => {
     res.send(isValid ? '✅ CNPJ válido!' : '❌ CNPJ inválido.');
 });
 
+app.post('/generateCpf', (req, res) => {
+    const newCpf = cpf.generate();
+    const newCpfFormatted = cpf.format(newCpf);
+
+    res.send(newCpf ? newCpfFormatted : '❌ Erro.');
+});
+
+app.post('/generateCnpj', (req, res) => {
+    const newCnpj = cnpj.generate();
+    const newCnpjFormatted = cnpj.format(newCnpj);
+
+    res.send(newCnpj ? newCnpjFormatted : '❌ Erro.');
+});
+
 app.listen(PORT, () => {
     console.log(`Server rodando na porta: ${PORT}`);
 });

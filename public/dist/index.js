@@ -6,6 +6,10 @@ function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 var cpfBtn = document.querySelector('#cpfBtn');
 var cnpjBtn = document.querySelector('#cnpjBtn');
+var cpfGenBtn = document.querySelector('#cpfGenBtn');
+var cpfGenCopyBtn = document.querySelector('#cpfGenCopyBtn');
+var cnpjGenBtn = document.querySelector('#cnpjGenBtn');
+var cnpjGenCopyBtn = document.querySelector('#cnpjGenCopyBtn');
 cpfBtn.addEventListener('click', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(ev) {
     var resultCpf, cpf, response, text;
@@ -90,3 +94,91 @@ cnpjBtn.addEventListener('click', /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }());
+cpfGenBtn.addEventListener('click', /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(ev) {
+    var resultCpf, response, newCpf;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          ev.preventDefault();
+          resultCpf = document.querySelector('#cpfGenerated');
+          resultCpf.value = '⏳ Gerando...';
+
+          // Forçando um delay com Promise
+          _context3.next = 5;
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, 500);
+          });
+        case 5:
+          _context3.next = 7;
+          return fetch('/generateCpf', {
+            method: 'POST'
+          });
+        case 7:
+          response = _context3.sent;
+          _context3.next = 10;
+          return response.text();
+        case 10:
+          newCpf = _context3.sent;
+          resultCpf.value = newCpf;
+        case 12:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3);
+  }));
+  return function (_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}());
+cnpjGenBtn.addEventListener('click', /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(ev) {
+    var resultCnpj, response, newCnpj;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          ev.preventDefault();
+          resultCnpj = document.querySelector('#cnpjGenerated');
+          resultCnpj.value = '⏳ Gerando...';
+
+          // Forçando um delay com Promise
+          _context4.next = 5;
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, 500);
+          });
+        case 5:
+          _context4.next = 7;
+          return fetch('/generateCnpj', {
+            method: 'POST'
+          });
+        case 7:
+          response = _context4.sent;
+          _context4.next = 10;
+          return response.text();
+        case 10:
+          newCnpj = _context4.sent;
+          resultCnpj.value = newCnpj;
+        case 12:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4);
+  }));
+  return function (_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}());
+cpfGenCopyBtn.addEventListener('click', function (ev) {
+  ev.preventDefault();
+  var resultCpf = document.querySelector('#cpfGenerated').value;
+  if (resultCpf) {
+    navigator.clipboard.writeText(resultCpf);
+  }
+});
+cnpjGenCopyBtn.addEventListener('click', function (ev) {
+  ev.preventDefault();
+  var resultCnpj = document.querySelector('#cnpjGenerated').value;
+  if (resultCnpj) {
+    navigator.clipboard.writeText(resultCnpj);
+  }
+});

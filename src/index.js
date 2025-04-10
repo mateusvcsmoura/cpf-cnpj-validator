@@ -1,6 +1,12 @@
 const cpfBtn = document.querySelector('#cpfBtn');
 const cnpjBtn = document.querySelector('#cnpjBtn');
 
+const cpfGenBtn = document.querySelector('#cpfGenBtn');
+const cpfGenCopyBtn = document.querySelector('#cpfGenCopyBtn');
+
+const cnpjGenBtn = document.querySelector('#cnpjGenBtn');
+const cnpjGenCopyBtn = document.querySelector('#cnpjGenCopyBtn');
+
 cpfBtn.addEventListener('click', async function (ev) {
     ev.preventDefault();
 
@@ -43,4 +49,52 @@ cnpjBtn.addEventListener('click', async function (ev) {
     resultCnpj.innerText = text;
 });
 
+cpfGenBtn.addEventListener('click', async function (ev) {
+    ev.preventDefault();
 
+    const resultCpf = document.querySelector('#cpfGenerated');
+    resultCpf.value = '⏳ Gerando...';
+
+    // Forçando um delay com Promise
+    await new Promise (resolve => setTimeout(resolve, 500));
+
+    const response = await fetch('/generateCpf', { method: 'POST' });
+
+    const newCpf = await response.text();
+    resultCpf.value = newCpf;
+});
+
+cnpjGenBtn.addEventListener('click', async function (ev) {
+    ev.preventDefault();
+
+    const resultCnpj = document.querySelector('#cnpjGenerated');
+    resultCnpj.value = '⏳ Gerando...';
+
+    // Forçando um delay com Promise
+    await new Promise (resolve => setTimeout(resolve, 500));
+
+    const response = await fetch('/generateCnpj', { method: 'POST' });
+
+    const newCnpj = await response.text();
+    resultCnpj.value = newCnpj;
+});
+
+cpfGenCopyBtn.addEventListener('click', function (ev) {
+    ev.preventDefault();
+
+    const resultCpf = document.querySelector('#cpfGenerated').value;
+
+    if (resultCpf) {
+        navigator.clipboard.writeText(resultCpf);
+    }
+});
+
+cnpjGenCopyBtn.addEventListener('click', function (ev) {
+    ev.preventDefault();
+
+    const resultCnpj = document.querySelector('#cnpjGenerated').value;
+
+    if (resultCnpj) {
+        navigator.clipboard.writeText(resultCnpj);
+    }
+});

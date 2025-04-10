@@ -1,6 +1,6 @@
 # Validador de CPF e CNPJ
 
-Projeto simples feito com **Node.js** e bibliotecas do **npm** para validar **CPF** e **CNPJ** via interface web.
+Projeto simples feito com **Node.js** e bibliotecas do **npm** para validar e gerar **CPF** e **CNPJ** via interface web.
 
 > ⚠️ Este projeto foi desenvolvido apenas para fins de estudo e prática com bibliotecas npm.  
 > Não deve ser usado em produção sem ajustes e melhorias.
@@ -19,6 +19,7 @@ Projeto simples feito com **Node.js** e bibliotecas do **npm** para validar **CP
 ## 💡 Funcionalidades
 
 - Interface simples com campos para digitar um **CPF** ou **CNPJ**.
+- Interface simples com campos para gerar um **CPF** ou **CNPJ**.
 - Validação é feita no backend usando a biblioteca [`cpf-cnpj-validator`](https://www.npmjs.com/package/cpf-cnpj-validator).
 - Retorno visual indicando se o valor digitado é **válido** ou **inválido**.
 - Feedback visual de **"⏳ Carregando..."** durante a validação.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="inter">CPF/CNPJ Validator</h1>
+        <form>
+            <div>
+                <div class="cpf-container">
+                    <input type="text" name="cpf" id="cpf" placeholder="Digite o CPF.." class="inter"/>
+                    <button id="cpfBtn" class="inter">Validar</button>
+                </div>
+                <p id="resultCpf" class="result inter"></p>
+            </div>
+            <div>
+                <div class="cnpj-container">
+                    <input type="text" name="cnpj" id="cnpj" placeholder="Digite o CNPJ.." class="inter"/>
+                    <button id="cnpjBtn" class="inter">Validar</button>
+                </div>
+                <p id="resultCnpj" class="result inter"></p>
+            </div>
+        </form>
+    </main>
+
+    <script src="./dist/index.js"></script>
+</body>
+
+</html>

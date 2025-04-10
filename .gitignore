@@ -1,0 +1,15 @@
+# Ignora os módulos instalados via npm
+**/node_modules/
+
+# Arquivos de ambiente (não subir nunca)
+.env
+.env.local
+.env.*.local
+
+# Pastas de editores de código
+.vscode/
+.idea/
+
+# Arquivos do sistema operacional
+*.swp
+*.swo
